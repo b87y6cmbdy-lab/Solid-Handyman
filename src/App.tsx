@@ -128,8 +128,9 @@ const Navbar = () => {
 
 const Hero = () => {
   return (
-    <section className="relative min-h-[85vh] md:min-h-screen bg-primary flex items-center pt-20 overflow-hidden hero-pattern">
+    <section className="relative min-h-[70vh] md:min-h-[80vh] bg-primary flex items-center pt-20 overflow-hidden hero-pattern">
       <div className="max-w-7xl mx-auto px-4 md:px-6 w-full flex flex-col items-center text-center">
+        <div className="flex flex-col items-center text-center">
         <motion.h1 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -161,11 +162,10 @@ const Hero = () => {
             Call Now: {PHONE}
           </a>
         </motion.div>
-
-
       </div>
+    </div>
 
-      {/* Decorative divider */}
+    {/* Decorative divider */}
       <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-[0]">
         <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-full h-12 md:h-20 fill-bg">
           <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C58,118.26,172.16,118.06,231.39,112.14,273,107.95,296,87.05,321.39,56.44Z"></path>
@@ -198,69 +198,58 @@ const TrustBar = () => (
   </div>
 );
 
-const Services = ({ onImageClick }: { onImageClick: (img: string) => void }) => {
+const Services = () => {
   const services = [
     { 
       name: "Interior & Exterior Painting", 
       desc: "High-quality paint services for every room and outdoor surface.", 
       icon: <Paintbrush className="text-accent" />,
-      gallery: ["/input_file_4.png", "/input_file_6.png"]
     },
     { 
       name: "Drywall Install & Repair", 
       desc: "Seamless patches and full board installation for a perfect finish.", 
       icon: <Hammer className="text-accent" />,
-      gallery: [] 
     },
     { 
       name: "Flooring Services", 
       desc: "Expert installation and repair of hardwood, laminate, and vinyl solutions.", 
       icon: <Layers className="text-accent" />,
-      gallery: []
     },
     { 
       name: "Plumbing & Water Fixtures", 
       desc: "Installation and repair of faucets, showerheads, and leaky pipes.", 
       icon: <Droplets className="text-accent" />,
-      gallery: ["/input_file_2.png", "/input_file_11.png", "/input_file_12.png"]
     },
     { 
-      name: "Fan Install & Repair", 
-      desc: "Ceiling fan and ventilation installation to keep your home comfortable.", 
+      name: "Fan Install & Repair / Electrical", 
+      desc: "Ceiling fan and lighting fixture installation to keep your home bright and comfortable.", 
       icon: <Fan className="text-accent" />,
-      gallery: []
     },
     { 
       name: "TV Mounting", 
       desc: "Secure and level mounting for all screen sizes with hidden cabling options.", 
       icon: <Tv className="text-accent" />,
-      gallery: ["/input_file_3.png", "/input_file_9.png"]
     },
     { 
-      name: "Furniture Assembly", 
-      desc: "Quick and correct assembly for all brands and flat-pack furniture.", 
+      name: "Furniture & Outdoor Assembly", 
+      desc: "Quick and correct assembly for indoor furniture and outdoor gazebos/pergolas.", 
       icon: <Box className="text-accent" />,
-      gallery: ["/input_file_1.png", "/input_file_0.png"]
     },
     { 
       name: "Tile Installation", 
       desc: "Professional tile work and replacement for kitchens and bathrooms.", 
       icon: <LayoutGrid className="text-accent" />,
-      gallery: []
     },
     { 
-      name: "Gutter Cleaning", 
-      desc: "Essential debris removal to protect your roofing and foundation.", 
+      name: "Gutter & Outdoor Maintenance", 
+      desc: "Essential cleaning and repair to protect your roofing and foundation.", 
       icon: <Trash2 className="text-accent" />,
-      gallery: []
     },
     { 
       name: "General Home Repairs", 
-      desc: "Tackling your entire home maintenance and 'to-do' list with precision.", 
+      desc: "Tackling your entire home maintenance list from microwaves to picture hanging.", 
       icon: <Settings className="text-accent" />,
-      gallery: ["/input_file_7.png", "/input_file_5.png", "/input_file_10.png"]
     },
-
   ];
 
   return (
@@ -284,36 +273,9 @@ const Services = ({ onImageClick }: { onImageClick: (img: string) => void }) => 
                 {service.icon}
               </div>
               <h3 className="text-xl font-serif mb-3">{service.name}</h3>
-              <p className="text-text-secondary mb-6 leading-relaxed flex-grow">
+              <p className="text-text-secondary mb-2 leading-relaxed flex-grow">
                 {service.desc}
               </p>
-              
-              {service.gallery && service.gallery.length > 0 && (
-                <div className="mt-4">
-                  <p className="text-xs font-bold uppercase tracking-wider text-text-secondary mb-3">Recent Work:</p>
-                  <div className="grid grid-cols-2 gap-2">
-                    {service.gallery.map((img, idx) => (
-                      <button 
-                        key={idx} 
-                        onClick={() => onImageClick(img)}
-                        className="aspect-[3/4] rounded-md overflow-hidden bg-gray-100 border border-border relative group/img cursor-zoom-in"
-                      >
-                        <img 
-                          src={img} 
-                          alt={`${service.name} example ${idx + 1}`} 
-                          className="w-full h-full object-cover transition-transform duration-500 group-hover/img:scale-110"
-                          referrerPolicy="no-referrer"
-                        />
-                        <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center justify-center">
-                          <div className="bg-white/90 px-3 py-1.5 rounded text-[10px] font-bold text-primary flex items-center">
-                            <LayoutGrid size={12} className="mr-1" /> View Example
-                          </div>
-                        </div>
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              )}
             </motion.div>
           ))}
         </div>
@@ -388,55 +350,38 @@ const Reviews = () => (
 const About = () => (
   <section id="about" className="py-20 bg-white overflow-hidden">
     <div className="max-w-7xl mx-auto px-4 md:px-6">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-        <div className="order-2 lg:order-1">
-          <SectionTitle>Built on Honesty. Backed by Experience.</SectionTitle>
-          <div className="space-y-6 text-text-secondary text-lg leading-relaxed mt-8">
-            <p>
-              Solid Handyman Co. was born out of a simple frustration: homeowners in the {CITY} area couldn't find a tradesperson who combined high-quality craft with basic professionalism. We saw too many flaky contractors leaving jobs halfway or showing up late without a call.
-            </p>
-            <p>
-              Our founder, Dmytro, decided to change that. He built a business where the handshake means something, the quote is the final price, and every project is treated with the same care as if it were his own home.
-            </p>
-            <p>
-              Whether we're installing a new garbage disposal, repairing furniture, or fixing drywall, you get the same promise: always on time, always clean, and always honest pricing.
-            </p>
+      <div className="max-w-3xl mx-auto text-center">
+        <SectionTitle>Built on Honesty. Backed by Experience.</SectionTitle>
+        <div className="space-y-6 text-text-secondary text-lg leading-relaxed mt-8">
+          <p>
+            Solid Handyman Co. was born out of a simple frustration: homeowners in the {CITY} area couldn't find a tradesperson who combined high-quality craft with basic professionalism. We saw too many flaky contractors leaving jobs halfway or showing up late without a call.
+          </p>
+          <p>
+            Our founder, Dmytro, decided to change that. He built a business where the handshake means something, the quote is the final price, and every project is treated with the same care as if it were his own home.
+          </p>
+          <p>
+            Whether we're installing a new garbage disposal, repairing furniture, or fixing drywall, you get the same promise: always on time, always clean, and always honest pricing.
+          </p>
 
-            <ul className="grid grid-cols-2 gap-4 mt-8">
-              {[
-                "Licensed & Insured",
-                "8 Years Local Service",
-                "Background Checked",
-                "Satisfaction Guaranteed"
-              ].map((item, i) => (
-                <li key={i} className="flex items-center space-x-2 text-primary font-medium">
-                  <CheckCircle2 size={18} className="text-accent" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
+          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8 text-left max-w-xl mx-auto">
+            {[
+              "Licensed & Insured",
+              "8 Years Local Service",
+              "Background Checked",
+              "Satisfaction Guaranteed"
+            ].map((item, i) => (
+              <li key={i} className="flex items-center space-x-2 text-primary font-medium">
+                <CheckCircle2 size={18} className="text-accent" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
 
-            <button className="bg-accent hover:bg-accent-hover text-text-primary px-8 py-3 rounded-md font-bold mt-8 transition-all flex items-center">
-              Meet the Team <ArrowRight size={18} className="ml-2" />
-            </button>
+          <div className="flex justify-center mt-10">
+            <a href="#contact" className="bg-accent hover:bg-accent-hover text-text-primary px-8 py-3 rounded-md font-bold transition-all flex items-center">
+              Message Dmytro <ArrowRight size={18} className="ml-2" />
+            </a>
           </div>
-        </div>
-
-        <div className="order-1 lg:order-2 flex flex-col items-center lg:items-end space-y-6">
-          <div className="relative w-full max-w-md aspect-square bg-primary-light rounded-2xl shadow-xl overflow-hidden transform rotate-2">
-            <img 
-              src="/input_file_8.png" 
-              alt="Dmytro's Professional Equipment" 
-              className="w-full h-full object-cover opacity-90"
-              referrerPolicy="no-referrer"
-            />
-            <div className="absolute inset-0 bg-primary/20"></div>
-            <div className="absolute bottom-6 left-6 text-white space-y-1">
-              <p className="font-serif italic text-2xl drop-shadow-md">Fully Equipped</p>
-              <p className="text-sm font-sans text-white/80 drop-shadow-md">Ready for any project</p>
-            </div>
-          </div>
-          <div className="hidden lg:block w-32 h-1 bg-accent rounded-full mr-12 opacity-50"></div>
         </div>
       </div>
     </div>
@@ -635,7 +580,7 @@ const Footer = () => (
             <span className="text-xl font-sans font-medium text-white/90">Handyman Co.</span>
           </div>
           <p className="text-sm leading-relaxed mb-6">
-            Springfield's premier handyman service. Quality work, honest pricing, and punctuality you can count on every single time.
+            {CITY}'s premier handyman service. Quality work, honest pricing, and punctuality you can count on every single time.
           </p>
           <div className="flex space-x-4">
             <a href="#" className="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-accent hover:text-primary transition-all">
@@ -698,15 +643,13 @@ const MobileStickyCTA = () => (
 // --- Main App ---
 
 export default function App() {
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
-
   return (
     <div className="relative">
       <Navbar />
       <main>
         <Hero />
         <TrustBar />
-        <Services onImageClick={setSelectedImage} />
+        <Services />
         <HowItWorks />
         <Reviews />
         <About />
@@ -715,32 +658,6 @@ export default function App() {
       </main>
       <Footer />
       <MobileStickyCTA />
-
-      {/* Lightbox */}
-      <AnimatePresence>
-        {selectedImage && (
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setSelectedImage(null)}
-            className="fixed inset-0 z-[1000] bg-black/90 flex items-center justify-center p-4 md:p-10 cursor-zoom-out"
-          >
-            <button className="absolute top-6 right-6 text-white hover:text-accent p-2">
-              <X size={32} />
-            </button>
-            <motion.img 
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              src={selectedImage} 
-              alt="Project View" 
-              className="max-w-full max-h-full rounded-lg shadow-2xl object-contain"
-              referrerPolicy="no-referrer"
-            />
-          </motion.div>
-        )}
-      </AnimatePresence>
     </div>
   );
 }
