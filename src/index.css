@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "DM Serif Display", serif;
+  --font-sans: "DM Sans", sans-serif;
+
+  --color-primary: #1B3A2D;
+  --color-primary-light: #2C5F46;
+  --color-accent: #E8A020;
+  --color-accent-hover: #CF8A10;
+  --color-bg: #FAFAF8;
+  --color-bg-dark: #1B3A2D;
+  --color-bg-card: #FFFFFF;
+  --color-text-primary: #1A1A18;
+  --color-text-secondary: #5A5A55;
+  --color-text-light: #F5F3EE;
+  --color-border: #E4E2DC;
+  --color-success: #2A7A4B;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+
+  --shadow-card: 0 2px 12px rgba(0,0,0,0.07);
+  --shadow-cta: 0 4px 20px rgba(232,160,32,0.35);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-bg text-text-primary font-sans;
+  }
+}
+
+.hero-pattern {
+  background-image: repeating-linear-gradient(45deg, rgba(255,255,255,0.015) 0px, rgba(255,255,255,0.015) 1px, transparent 1px, transparent 12px);
+}
+
+@media (max-width: 768px) {
+  body {
+    padding-bottom: 56px;
+  }
+}
